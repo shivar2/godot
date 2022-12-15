@@ -1,0 +1,73 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/fonts/Sniglet-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Title menu.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 80
+outline_size = 4
+outline_color = Color( 0.458824, 1, 0.219608, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.00392157, 0.0627451, 0.137255, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.764706, 0.819608, 0.890196, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Title menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="Bachground" type="ColorRect" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+color = Color( 0.0509804, 0.0941176, 0.2, 1 )
+
+[node name="TitleLabel" type="Label" parent="."]
+margin_left = 95.0
+margin_top = 44.0
+margin_right = 919.0
+margin_bottom = 169.0
+custom_colors/font_color = Color( 0, 0.623529, 1, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "welcome to my project"
+
+[node name="TitleUsername" type="Label" parent="."]
+margin_left = 98.0
+margin_top = 151.0
+margin_right = 922.0
+margin_bottom = 276.0
+custom_colors/font_color = Color( 1, 0, 0.513726, 1 )
+custom_fonts/font = SubResource( 1 )
+align = 1
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 324.0
+margin_top = 305.0
+margin_right = 694.0
+margin_bottom = 409.0
+custom_styles/panel = SubResource( 2 )
+
+[node name="UsernameField" type="LineEdit" parent="Panel"]
+margin_left = 49.0
+margin_top = 25.0
+margin_right = 312.0
+margin_bottom = 74.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/clear_button_color = Color( 0, 0, 0, 1 )
+custom_styles/normal = SubResource( 3 )
+clear_button_enabled = true
+placeholder_text = "Type your Username"
+caret_blink = true
+
+[connection signal="text_entered" from="Panel/UsernameField" to="." method="_on_Username_Field_text_entered"]
