@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/fonts/Sniglet-Regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Title menu.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Title menu.gd" type="Script" id=2]
+[ext_resource path="res://Assets/fonts/KiriFont.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Scripts/Button-title-go.gd" type="Script" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 80
@@ -22,6 +24,10 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+
+[sub_resource type="DynamicFont" id=4]
+size = 40
+font_data = ExtResource( 3 )
 
 [node name="Title menu" type="Control"]
 anchor_right = 1.0
@@ -70,4 +76,17 @@ clear_button_enabled = true
 placeholder_text = "Type your Username"
 caret_blink = true
 
+[node name="Button-title-go" type="Button" parent="."]
+margin_left = 434.0
+margin_top = 427.0
+margin_right = 599.0
+margin_bottom = 481.0
+custom_colors/font_color = Color( 0.12549, 0.729412, 0.701961, 1 )
+custom_colors/font_color_hover = Color( 0.819608, 0.262745, 0.666667, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "Go!"
+flat = true
+script = ExtResource( 4 )
+
 [connection signal="text_entered" from="Panel/UsernameField" to="." method="_on_Username_Field_text_entered"]
+[connection signal="pressed" from="Button-title-go" to="Button-title-go" method="_on_Buttontitlego_pressed"]
