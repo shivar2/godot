@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assets/fonts/Sniglet-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scripts/Title menu.gd" type="Script" id=2]
 [ext_resource path="res://Assets/fonts/KiriFont.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Scripts/Button-title-go.gd" type="Script" id=4]
+[ext_resource path="res://TransitionScreen.tscn" type="PackedScene" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 80
@@ -88,5 +89,9 @@ text = "Go!"
 flat = true
 script = ExtResource( 4 )
 
+[node name="TransitionScreen" parent="." instance=ExtResource( 5 )]
+
 [connection signal="text_entered" from="Panel/UsernameField" to="." method="_on_Username_Field_text_entered"]
+[connection signal="pressed" from="Button-title-go" to="." method="_on_Buttontitlego_pressed"]
 [connection signal="pressed" from="Button-title-go" to="Button-title-go" method="_on_Buttontitlego_pressed"]
+[connection signal="transitioned" from="TransitionScreen" to="." method="_on_TransitionScreen_transitioned"]

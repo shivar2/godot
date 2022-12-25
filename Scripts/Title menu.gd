@@ -1,20 +1,17 @@
 extends Control
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+onready var go_button = $"Button-title-go"
 
 
 func _on_Username_Field_text_entered(username):
 	$TitleUsername.text = username
+
+
+func _process(delta):
+	go_button.connect('pressed', self, 'change_scene')
+	
+func change_scene():
+	$TransitionScreen.transition()
+	
+func _on_TransitionScreen_transitioned():
+	get_tree().change_scene("res://ProjectScene.tscn")
